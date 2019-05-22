@@ -28,9 +28,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco install docker-for-windows git -y
 $h=hostname
 ipconfig | select-string -pattern "  IPv4 "|format-table @{Expression={$_.Line};Label="$h IPs"}
-$dockerpath = ADD-PATH -addedfolder C:\Program\ Files\Docker\Docker\resources\bin
+$dockerpath = ADD-PATH -addedfolder "C:\Program Files\Docker\Docker\resources\bin"
 Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $dockerpath
-$gitpath = ADD-PATH -addedfolder C:\Program\ Files\Git\bin
+$gitpath = ADD-PATH -addedfolder "C:\Program Files\Git\bin"
 Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $gitpath
 invoke-webrequest https://raw.githubusercontent.com/microsoft/ai-edu/mpp/C-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%8E%AF%E5%A2%83/mpp/run.ps1 -outfile C:\training\run.ps1
 Write-Host -ForegroundColor Yellow -BackgroundColor DarkGreen "configure docker setting, share C folder, then reboot machine"
