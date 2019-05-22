@@ -1,6 +1,8 @@
 docker -v
 git -v
 netsh advfirewall firewall add rule name="Jupyter 8000" dir=in action=allow protocol=TCP localport=8000
+mkdir C:\training
+cd C:\training
 try {
     $ErrorActionPreference = "Stop"
     git clone https://github.com/bartuer/training_notebook.git
