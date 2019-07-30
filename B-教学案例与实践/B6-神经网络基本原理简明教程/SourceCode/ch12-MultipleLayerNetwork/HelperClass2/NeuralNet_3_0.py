@@ -25,7 +25,7 @@ class NeuralNet_3_0(object):
     def __init__(self, hp, model_name):
         self.hp = hp
         self.model_name = model_name
-        self.subfolder = os.getcwd() + "\\" + self.__create_subfolder()
+        self.subfolder = os.getcwd() + "/" + self.__create_subfolder()
         print(self.subfolder)
 
         self.wb1 = WeightsBias_1_0(self.hp.num_input, self.hp.num_hidden1, self.hp.init_method, self.hp.eta)
@@ -38,7 +38,7 @@ class NeuralNet_3_0(object):
     def __create_subfolder(self):
         if self.model_name != None:
             path = self.model_name.strip()
-            path = path.rstrip("\\")
+            path = path.rstrip("/")
             isExists = os.path.exists(path)
             if not isExists:
                 os.makedirs(path)
